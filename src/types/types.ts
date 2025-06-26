@@ -1,4 +1,8 @@
 // types/nhl.ts
+// types/nhl.ts
+import type {CSSProperties, ReactNode} from 'react';
+
+
 export interface TeamName {
   default: string;
 }
@@ -31,4 +35,16 @@ export interface NHLGameScore {
 export interface NHLScoreResponse {
   games: NHLGameScore[];
   currentDate: string;
+}
+
+export interface RankingResult {
+  game: NHLGameScore;
+  score: number;
+}
+
+export interface ScoreBackgroundProps {
+  score: number;
+  children: ReactNode;
+  className?: string;
+  style?: CSSProperties;
 }

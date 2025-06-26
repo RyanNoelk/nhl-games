@@ -1,8 +1,9 @@
 // components/NHLScoresComponent.tsx
 import React, { useState } from 'react';
-import { useNHLScores } from '../hooks/getGames/useNHLScoresHook.ts';
+import { useNHLScores } from '../hooks/useNHLScoresHook.ts';
 import { GameCard } from './GameCard.tsx';
 import { useFavoriteTeams } from '../hooks/useFavoriteTeams';
+import {rankGames} from "../utils/gameRanking.ts";
 
 
 const getYesterday = (): string => {
@@ -72,19 +73,10 @@ export const NHLScores: React.FC = () => {
   // Force update state to trigger re-renders when URL changes
   const [_, setForceUpdate] = React.useState(false);
 
-  const sortGames = (games: any[]) => {
-    return [...games].sort((a, b) => {
-      const aIsFavorite =
-        isFavorite(a.homeTeam.abbrev) || isFavorite(a.awayTeam.abbrev);
-      const bIsFavorite =
-        isFavorite(b.homeTeam.abbrev) || isFavorite(b.awayTeam.abbrev);
-
-      if (aIsFavorite && !bIsFavorite) return -1;
-      if (!aIsFavorite && bIsFavorite) return 1;
-      return 0;
-    });
+   const getRankedGames = (games: any[]) => {
+    console.log(rankGames(games, favoriteTeams));
+    return rankGames(games, favoriteTeams);
   };
-
 
   if (loading) {
     return <div>Loading...</div>;
@@ -134,9 +126,9 @@ export const NHLScores: React.FC = () => {
       <h2>NHL Scores for {data.currentDate}</h2>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-        {sortGames(data.games).map(game => (
+        {getRankedGames(data.games).map(game => (
           <GameCard
-            key={game.id}
+            key={game.game.id}
             game={game}
             spoilerFree={spoilerFree}
             isFavorite={isFavorite}

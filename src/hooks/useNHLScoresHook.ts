@@ -1,6 +1,6 @@
 // hooks/getGames/useNHLScoresHook.ts
 import { useState, useEffect, useCallback, useRef } from 'react';
-import type { NHLScoreResponse } from '../../types/types.ts';
+import type { NHLScoreResponse } from '../types/types.ts';
 
 interface CacheEntry {
   data: NHLScoreResponse;

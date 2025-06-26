@@ -1,5 +1,5 @@
 // hooks/useFavoriteTeams.ts
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export const useFavoriteTeams = () => {
   const [favoriteTeams, setFavoriteTeams] = useState<string[]>(() => {
