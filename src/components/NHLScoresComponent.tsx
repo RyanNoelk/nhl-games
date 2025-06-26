@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { useNHLScores } from '../hooks/getGames/useNHLScoresHook.ts';
 import { GameCard } from './GameCard.tsx';
+import { useFavoriteTeams } from '../hooks/useFavoriteTeams';
+
 
 const getYesterday = (): string => {
   const date = new Date();
@@ -12,6 +14,7 @@ const getYesterday = (): string => {
 export const NHLScores: React.FC = () => {
   // Get the date from URL or use today's date
   const [spoilerFree, setSpoilerFree] = useState(true);
+  const { favoriteTeams, toggleFavorite, isFavorite } = useFavoriteTeams();
   const searchParams = new URLSearchParams(window.location.search);
   const urlDate = searchParams.get('date');
   const today = new Date().toISOString().split('T')[0];
@@ -69,6 +72,20 @@ export const NHLScores: React.FC = () => {
   // Force update state to trigger re-renders when URL changes
   const [_, setForceUpdate] = React.useState(false);
 
+  const sortGames = (games: any[]) => {
+    return [...games].sort((a, b) => {
+      const aIsFavorite =
+        isFavorite(a.homeTeam.abbrev) || isFavorite(a.awayTeam.abbrev);
+      const bIsFavorite =
+        isFavorite(b.homeTeam.abbrev) || isFavorite(b.awayTeam.abbrev);
+
+      if (aIsFavorite && !bIsFavorite) return -1;
+      if (!aIsFavorite && bIsFavorite) return 1;
+      return 0;
+    });
+  };
+
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -117,8 +134,14 @@ export const NHLScores: React.FC = () => {
       <h2>NHL Scores for {data.currentDate}</h2>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-        {data.games.map(game => (
-          <GameCard key={game.id} game={game} spoilerFree={spoilerFree} />
+        {sortGames(data.games).map(game => (
+          <GameCard
+            key={game.id}
+            game={game}
+            spoilerFree={spoilerFree}
+            isFavorite={isFavorite}
+            onToggleFavorite={toggleFavorite}
+          />
         ))}
       </div>
     </div>
