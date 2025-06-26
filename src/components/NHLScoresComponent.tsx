@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 import { useNHLScores } from '../hooks/useNHLScoresHook.ts';
 import { GameCard } from './GameCard.tsx';
 import { useFavoriteTeams } from '../hooks/useFavoriteTeams';
-import {rankGames} from "../utils/gameRanking.ts";
-
+import { rankGames } from '../utils/gameRanking.ts';
 
 const getYesterday = (): string => {
   const date = new Date();
@@ -73,7 +72,7 @@ export const NHLScores: React.FC = () => {
   // Force update state to trigger re-renders when URL changes
   const [_, setForceUpdate] = React.useState(false);
 
-   const getRankedGames = (games: any[]) => {
+  const getRankedGames = (games: any[]) => {
     console.log(rankGames(games, favoriteTeams));
     return rankGames(games, favoriteTeams);
   };

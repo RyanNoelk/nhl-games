@@ -2,7 +2,9 @@
 export const calculateBackgroundColor = (score: number): string => {
   // No score = no background
   console.log(score);
-  if (score === 0) return 'transparent';
+  if (score === 0) {
+    return 'transparent';
+  }
 
   // Calculate color intensity based on score
   const baseColor = 'rgba(100, 108, 255, ';

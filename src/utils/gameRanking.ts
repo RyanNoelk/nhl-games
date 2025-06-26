@@ -1,12 +1,8 @@
 // utils/gameRanking.ts
 
-import type {NHLGameScore, RankingResult} from "../types/types.ts";
+import type { NHLGameScore, RankingResult } from '../types/types.ts';
 
-
-export const calculateGameScore = (
-  game: NHLGameScore,
-  favoriteTeams: string[]
-): RankingResult => {
+export const calculateGameScore = (game: NHLGameScore, favoriteTeams: string[]): RankingResult => {
   let score = 0;
   // Check if the game includes a favorite team
   const homeIsFavorite = favoriteTeams.includes(game.homeTeam.abbrev);
@@ -38,10 +34,7 @@ export const calculateGameScore = (
   };
 };
 
-export const rankGames = (
-  games: NHLGameScore[],
-  favoriteTeams: string[]
-): RankingResult[] => {
+export const rankGames = (games: NHLGameScore[], favoriteTeams: string[]): RankingResult[] => {
   return games
     .map(game => calculateGameScore(game, favoriteTeams))
     .sort((a, b) => b.score - a.score);

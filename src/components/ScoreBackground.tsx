@@ -1,13 +1,13 @@
 // components/ScoreBackground/ScoreBackground.tsx
 import React from 'react';
-import type {ScoreBackgroundProps} from "../types/types.ts";
-import {calculateBackgroundColor} from "../utils/scoreBackground.ts";
+import type { ScoreBackgroundProps } from '../types/types.ts';
+import { calculateBackgroundColor } from '../utils/scoreBackground.ts';
 
 export const ScoreBackground: React.FC<ScoreBackgroundProps> = ({
   score,
   children,
   className,
-  style
+  style,
 }) => {
   const backgroundColor = calculateBackgroundColor(score);
 
@@ -20,7 +20,7 @@ export const ScoreBackground: React.FC<ScoreBackgroundProps> = ({
         transition: 'background-color 0.3s ease',
         padding: '10px',
         borderRadius: '4px',
-        border: '1px solid #ccc'
+        border: '1px solid #ccc',
       }}
     >
       {score}

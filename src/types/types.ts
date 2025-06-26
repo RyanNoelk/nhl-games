@@ -1,7 +1,6 @@
 // types/nhl.ts
 // types/nhl.ts
-import type {CSSProperties, ReactNode} from 'react';
-
+import type { CSSProperties, ReactNode } from 'react';
 
 export interface TeamName {
   default: string;

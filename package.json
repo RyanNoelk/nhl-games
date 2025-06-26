@@ -10,7 +10,7 @@
     "lint": "eslint . --ext .ts,.tsx --fix",
     "type-check": "tsc --noEmit",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,scss}\"",
-    "validate": "npm run type-check && npm run lint:strict"
+    "fix": "npm run type-check && npm run lint && npm run format"
   },
   "dependencies": {
     "react": "^19.1.0",

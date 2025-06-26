@@ -1,8 +1,8 @@
 // components/GameCard.tsx
 import React, { useState } from 'react';
 import type { RankingResult } from '../types/types.ts';
-import TeamLogo from "./TeamLogo.tsx";
-import {ScoreBackground} from "./ScoreBackground.tsx";
+import TeamLogo from './TeamLogo.tsx';
+import { ScoreBackground } from './ScoreBackground.tsx';
 
 interface GameCardProps {
   game: RankingResult;
@@ -15,7 +15,7 @@ export const GameCard: React.FC<GameCardProps> = ({
   game,
   spoilerFree,
   isFavorite,
-  onToggleFavorite
+  onToggleFavorite,
 }) => {
   const [showScore, setShowScore] = useState(false);
   const toggleScore = () => {
@@ -29,7 +29,7 @@ export const GameCard: React.FC<GameCardProps> = ({
       style={{
         display: 'flex',
         alignItems: 'center',
-        gap: '20px'
+        gap: '20px',
       }}
     >
       <div
@@ -53,7 +53,7 @@ export const GameCard: React.FC<GameCardProps> = ({
                   background: 'none',
                   border: 'none',
                   cursor: 'pointer',
-                  fontSize: '1.5rem'
+                  fontSize: '1.5rem',
                 }}
               >
                 {isFavorite(game.game.awayTeam.abbrev) ? '⭐' : '☆'}
@@ -71,7 +71,7 @@ export const GameCard: React.FC<GameCardProps> = ({
                   background: 'none',
                   border: 'none',
                   cursor: 'pointer',
-                  fontSize: '1.5rem'
+                  fontSize: '1.5rem',
                 }}
               >
                 {isFavorite(game.game.homeTeam.abbrev) ? '⭐' : '☆'}
@@ -82,7 +82,8 @@ export const GameCard: React.FC<GameCardProps> = ({
 
             {reveal ? (
               <div>
-                {game.game.awayTeam.name.default} {game.game.awayTeam.score} - {game.game.homeTeam.score} {game.game.homeTeam.name.default}
+                {game.game.awayTeam.name.default} {game.game.awayTeam.score} -{' '}
+                {game.game.homeTeam.score} {game.game.homeTeam.name.default}
               </div>
             ) : (
               <div style={{ color: '#666' }}>Click to reveal score</div>
