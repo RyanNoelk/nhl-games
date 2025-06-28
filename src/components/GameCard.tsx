@@ -9,12 +9,13 @@ import {
   Grid,
   Avatar,
   useTheme,
-  Button
+  Chip,
 } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import type { RankingResult } from '../types/types.ts';
-import {GameCardHeader} from "./GameCardHeader.tsx";
+import { GameCardHeader } from './GameCardHeader.tsx';
+import { AirplaneTicket, Home } from '@mui/icons-material';
 
 interface GameCardProps {
   game: RankingResult;
@@ -27,17 +28,12 @@ export const GameCard: React.FC<GameCardProps> = ({
   game,
   spoilerFree,
   isFavorite,
-  onToggleFavorite
+  onToggleFavorite,
 }) => {
   const theme = useTheme();
   const [showScore, setShowScore] = useState(false);
   const { game: gameData, score } = game;
   const { homeTeam, awayTeam, venue, startTimeUTC } = gameData;
-
-  const gameTime = new Date(startTimeUTC).toLocaleTimeString([], {
-    hour: '2-digit',
-    minute: '2-digit'
-  });
 
   const reveal = spoilerFree ? showScore : true;
 
@@ -70,18 +66,28 @@ export const GameCard: React.FC<GameCardProps> = ({
       </Grid>
 
       <Grid item xs={6}>
-        <Typography variant="body1" component="div">
+        <Typography variant="body1" component="span">
+          <Chip
+            icon={isHome ? <Home /> : <AirplaneTicket />}
+            size="small"
+            sx={{
+              height: 20,
+              '& .MuiChip-label': {
+                px: 0.5,
+                fontSize: '0.675rem',
+              },
+              backgroundColor: theme.palette.grey[100],
+              color: theme.palette.text.secondary,
+            }}
+          />
+        </Typography>
+        <Typography variant="body1" component="span" sx={{ marginLeft: 1 }}>
           {team.name.default}
         </Typography>
       </Grid>
 
       <Grid item xs={3}>
-        <Typography
-          variant="h6"
-          component="div"
-          align="right"
-          sx={{ fontWeight: 'bold' }}
-        >
+        <Typography variant="h6" component="div" align="right" sx={{ fontWeight: 'bold' }}>
           {reveal ? team.score : '-'}
         </Typography>
       </Grid>

@@ -1,7 +1,6 @@
 // components/ui/NHLScoresHeader.tsx
 import React from 'react';
 import {
-  Box,
   IconButton,
   TextField,
   FormControlLabel,
@@ -9,7 +8,6 @@ import {
   Typography,
   Paper,
   Stack,
-  Button
 } from '@mui/material';
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
@@ -34,7 +32,6 @@ const StyledDateTextField = styled(TextField)(({ theme }) => ({
 export const NHLScoresHeader: React.FC<NHLScoresHeaderProps> = ({
   date,
   today,
-  yesterday,
   spoilerFree,
   onDateChange,
   onNavigateDay,
@@ -49,17 +46,9 @@ export const NHLScoresHeader: React.FC<NHLScoresHeaderProps> = ({
         borderRadius: 2,
       }}
     >
-      <Stack
-        direction="row"
-        justifyContent="space-between"
-        alignItems="center"
-        spacing={2}
-      >
+      <Stack direction="row" justifyContent="space-between" alignItems="center" spacing={2}>
         <Stack direction="row" alignItems="center" spacing={1}>
-          <IconButton
-            onClick={() => onNavigateDay(-1)}
-            aria-label="Previous day"
-          >
+          <IconButton onClick={() => onNavigateDay(-1)} aria-label="Previous day">
             <ChevronLeft />
           </IconButton>
 
@@ -68,7 +57,7 @@ export const NHLScoresHeader: React.FC<NHLScoresHeaderProps> = ({
             value={date}
             onChange={onDateChange}
             inputProps={{
-              max: today
+              max: today,
             }}
             size="small"
           />
@@ -83,13 +72,7 @@ export const NHLScoresHeader: React.FC<NHLScoresHeaderProps> = ({
         </Stack>
 
         <FormControlLabel
-          control={
-            <Switch
-              checked={spoilerFree}
-              onChange={onToggleSpoilerMode}
-              color="primary"
-            />
-          }
+          control={<Switch checked={spoilerFree} onChange={onToggleSpoilerMode} color="primary" />}
           label={
             <Typography variant="body2" color="text.secondary">
               Spoiler-Free Mode

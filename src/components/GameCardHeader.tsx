@@ -1,7 +1,7 @@
 // components/ui/GameCardHeader.tsx
 import React from 'react';
-import {Box, Typography} from '@mui/material';
-import {getTimezoneAbbr} from "../utils/timezoneMap.ts";
+import { Box, Typography } from '@mui/material';
+import { getTimezoneAbbr } from '../utils/timezoneMap.ts';
 
 interface GameCardHeaderProps {
   startTimeUTC: string;
@@ -16,14 +16,14 @@ export const GameCardHeader: React.FC<GameCardHeaderProps> = ({ startTimeUTC, ve
   // Format local time
   const localTime = date.toLocaleTimeString([], {
     hour: '2-digit',
-    minute: '2-digit'
+    minute: '2-digit',
   });
 
   // Format EST time
   const estTime = date.toLocaleTimeString([], {
     hour: '2-digit',
     minute: '2-digit',
-    timeZone: 'America/New_York'
+    timeZone: 'America/New_York',
   });
 
   return (

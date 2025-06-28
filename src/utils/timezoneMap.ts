@@ -2,12 +2,13 @@
 export const getTimezoneAbbr = (date: Date): string => {
   const options: Intl.DateTimeFormatOptions = {
     timeZoneName: 'long',
-    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
+    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
   };
 
-  const longTZ = new Intl.DateTimeFormat('en-US', options)
-    .formatToParts(date)
-    .find(part => part.type === 'timeZoneName')?.value || '';
+  const longTZ =
+    new Intl.DateTimeFormat('en-US', options)
+      .formatToParts(date)
+      .find(part => part.type === 'timeZoneName')?.value || '';
 
   // Map of common timezone names to their abbreviations
   const tzMap: { [key: string]: string } = {
@@ -37,7 +38,7 @@ export const getTimezoneAbbr = (date: Date): string => {
     'Romance Standard Time': 'CET',
     'Romance Daylight Time': 'CEST',
     'GMT+1': 'CET',
-    'GMT+2': 'CEST'
+    'GMT+2': 'CEST',
   };
 
   return tzMap[longTZ] || longTZ;

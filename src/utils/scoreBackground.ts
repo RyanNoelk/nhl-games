@@ -1,7 +1,6 @@
 // components/ScoreBackground/utils.ts
 export const calculateBackgroundColor = (score: number): string => {
   // No score = no background
-  console.log(score);
   if (score === 0) {
     return 'transparent';
   }

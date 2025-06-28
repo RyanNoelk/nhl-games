@@ -4,8 +4,9 @@ import { useNHLScores } from '../hooks/useNHLScoresHook.ts';
 import { GameCard } from './GameCard.tsx';
 import { useFavoriteTeams } from '../hooks/useFavoriteTeams';
 import { rankGames } from '../utils/gameRanking.ts';
-import {NHLScoresHeader} from "./NHLScoresHeader.tsx";
-import {Container, Typography} from "@mui/material";
+import { NHLScoresHeader } from './NHLScoresHeader.tsx';
+import { Container, Typography } from '@mui/material';
+import type { NHLGameScore } from '../types/types.ts';
 
 const getYesterday = (): string => {
   const date = new Date();
@@ -74,8 +75,7 @@ export const NHLScores: React.FC = () => {
   // Force update state to trigger re-renders when URL changes
   const [_, setForceUpdate] = React.useState(false);
 
-  const getRankedGames = (games: any[]) => {
-    console.log(rankGames(games, favoriteTeams));
+  const getRankedGames = (games: NHLGameScore[]) => {
     return rankGames(games, favoriteTeams);
   };
 
@@ -104,7 +104,6 @@ export const NHLScores: React.FC = () => {
       <Typography variant="h4" component="h1" gutterBottom>
         NHL Scores for {data.currentDate}
       </Typography>
-
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         {getRankedGames(data.games).map(game => (
