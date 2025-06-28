@@ -4,6 +4,8 @@ import { useNHLScores } from '../hooks/useNHLScoresHook.ts';
 import { GameCard } from './GameCard.tsx';
 import { useFavoriteTeams } from '../hooks/useFavoriteTeams';
 import { rankGames } from '../utils/gameRanking.ts';
+import {NHLScoresHeader} from "./NHLScoresHeader.tsx";
+import {Container, Typography} from "@mui/material";
 
 const getYesterday = (): string => {
   const date = new Date();
@@ -88,41 +90,21 @@ export const NHLScores: React.FC = () => {
   }
 
   return (
-    <div>
-      <div
-        style={{
-          marginBottom: '20px',
-          display: 'flex',
-          gap: '10px',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }}
-      >
-        <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-          <button onClick={() => navigateDay(-1)} style={{ padding: '5px 10px' }}>
-            Previous Day
-          </button>
+    <Container maxWidth="md">
+      <NHLScoresHeader
+        date={urlDate || yesterday}
+        today={today}
+        yesterday={yesterday}
+        spoilerFree={spoilerFree}
+        onDateChange={handleDateChange}
+        onNavigateDay={navigateDay}
+        onToggleSpoilerMode={toggleSpoilerMode}
+      />
 
-          <input type="date" value={urlDate || yesterday} onChange={handleDateChange} max={today} />
+      <Typography variant="h4" component="h1" gutterBottom>
+        NHL Scores for {data.currentDate}
+      </Typography>
 
-          <button
-            onClick={() => navigateDay(1)}
-            disabled={(urlDate || yesterday) === today}
-            style={{ padding: '5px 10px' }}
-          >
-            Next Day
-          </button>
-        </div>
-
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <label style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-            <input type="checkbox" checked={spoilerFree} onChange={toggleSpoilerMode} />
-            Spoiler-Free Mode
-          </label>
-        </div>
-      </div>
-
-      <h2>NHL Scores for {data.currentDate}</h2>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         {getRankedGames(data.games).map(game => (
@@ -135,6 +117,6 @@ export const NHLScores: React.FC = () => {
           />
         ))}
       </div>
-    </div>
+    </Container>
   );
 };
