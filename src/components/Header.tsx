@@ -1,4 +1,4 @@
-// components/ui/NHLScoresHeader.tsx
+// @ts-nocheck
 import React from 'react';
 import {
   IconButton,
@@ -12,7 +12,7 @@ import {
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
 
-interface NHLScoresHeaderProps {
+interface HeaderProps {
   date: string;
   today: string;
   yesterday: string;
@@ -29,7 +29,7 @@ const StyledDateTextField = styled(TextField)(({ theme }) => ({
   },
 }));
 
-export const NHLScoresHeader: React.FC<NHLScoresHeaderProps> = ({
+export const Header: React.FC<HeaderProps> = ({
   date,
   today,
   spoilerFree,

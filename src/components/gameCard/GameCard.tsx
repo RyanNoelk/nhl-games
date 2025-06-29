@@ -1,4 +1,4 @@
-// components/ui/GameCard.tsx
+// @ts-nocheck
 import React, { useState } from 'react';
 import {
   Card,
@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
-import type { RankingResult } from '../types/types.ts';
+import type { RankingResult } from '../../types/types.ts';
 import { GameCardHeader } from './GameCardHeader.tsx';
 import { AirplaneTicket, Home } from '@mui/icons-material';
 

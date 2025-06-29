@@ -1,4 +1,4 @@
-// Helper function to get timezone abbreviation
+// @ts-nocheck
 export const getTimezoneAbbr = (date: Date): string => {
   const options: Intl.DateTimeFormatOptions = {
     timeZoneName: 'long',

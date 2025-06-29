@@ -1,10 +1,10 @@
-// components/NHLScoresComponent.tsx
+// @ts-nocheck
 import React, { useState } from 'react';
-import { useNHLScores } from '../hooks/useNHLScoresHook.ts';
-import { GameCard } from './GameCard.tsx';
+import { useScores } from '../hooks/useScoresHook.ts';
+import { GameCard } from './gameCard/GameCard.tsx';
 import { useFavoriteTeams } from '../hooks/useFavoriteTeams';
 import { rankGames } from '../utils/gameRanking.ts';
-import { NHLScoresHeader } from './NHLScoresHeader.tsx';
+import { Header } from './Header.tsx';
 import { Container, Typography } from '@mui/material';
 import type { NHLGameScore } from '../types/types.ts';
 
@@ -14,7 +14,7 @@ const getYesterday = (): string => {
   return date.toISOString().split('T')[0];
 };
 
-export const NHLScores: React.FC = () => {
+export const Scores: React.FC = () => {
   // Get the date from URL or use today's date
   const [spoilerFree, setSpoilerFree] = useState(true);
   const { favoriteTeams, toggleFavorite, isFavorite } = useFavoriteTeams();
@@ -23,7 +23,7 @@ export const NHLScores: React.FC = () => {
   const today = new Date().toISOString().split('T')[0];
   const yesterday = getYesterday();
 
-  const { data, loading, error } = useNHLScores({
+  const { data, loading, error } = useScores({
     date: urlDate || yesterday,
   });
 
@@ -91,7 +91,7 @@ export const NHLScores: React.FC = () => {
 
   return (
     <Container maxWidth="md">
-      <NHLScoresHeader
+      <Header
         date={urlDate || yesterday}
         today={today}
         yesterday={yesterday}

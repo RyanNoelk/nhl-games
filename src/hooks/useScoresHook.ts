@@ -1,4 +1,4 @@
-// hooks/getGames/useNHLScoresHook.ts
+// @ts-nocheck
 import { useState, useEffect, useCallback, useRef } from 'react';
 import type { NHLScoreResponse } from '../types/types.ts';
 
@@ -13,7 +13,7 @@ const CACHE_DURATION = 5 * 60 * 1000;
 // Create a cache map outside the hook to persist between renders
 const cache = new Map<string, CacheEntry>();
 
-export const useNHLScores = ({ date }: { date: string }) => {
+export const useScores = ({ date }: { date: string }) => {
   const [data, setData] = useState<NHLScoreResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);

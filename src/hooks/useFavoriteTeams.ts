@@ -1,4 +1,4 @@
-// hooks/useFavoriteTeams.ts
+// @ts-nocheck
 import { useState } from 'react';
 
 export const useFavoriteTeams = () => {

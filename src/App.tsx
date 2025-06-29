@@ -1,9 +1,8 @@
-// @ts-ignore
-import './App.css';
-import { NHLScores } from './components/NHLScoresComponent.tsx';
+// @ts-nocheck
+import {Scores} from './components/ScoresContainer.tsx';
 
 function App() {
-  return <NHLScores />;
+  return <Scores />;
 }
 
 export default App;

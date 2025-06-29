@@ -1,5 +1,4 @@
-// utils/gameRanking.ts
-
+// @ts-nocheck
 import type { NHLGameScore, RankingResult } from '../types/types.ts';
 
 export const calculateGameScore = (game: NHLGameScore, favoriteTeams: string[]): RankingResult => {

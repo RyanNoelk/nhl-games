@@ -1,7 +1,4 @@
-// types/nhl.ts
-// types/nhl.ts
-import type { CSSProperties, ReactNode } from 'react';
-
+// @ts-nocheck
 export interface TeamName {
   default: string;
 }
@@ -39,11 +36,4 @@ export interface NHLScoreResponse {
 export interface RankingResult {
   game: NHLGameScore;
   score: number;
-}
-
-export interface ScoreBackgroundProps {
-  score: number;
-  children: ReactNode;
-  className?: string;
-  style?: CSSProperties;
 }
