@@ -31,9 +31,6 @@ export const GameCardHeader: React.FC<GameCardHeaderProps> = ({ startTimeUTC, ve
       <Typography variant="subtitle2" color="text.secondary">
         {estTime} EST / {localTime} {getTimezoneAbbr(date)}
       </Typography>
-      <Typography variant="caption" color="text.secondary">
-        {venue.default}
-      </Typography>
     </Box>
   );
 };

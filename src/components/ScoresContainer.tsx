@@ -5,8 +5,9 @@ import { GameCard } from './gameCard/GameCard.tsx';
 import { useFavoriteTeams } from '../hooks/useFavoriteTeams';
 import { rankGames } from '../utils/gameRanking.ts';
 import { Header } from './Header.tsx';
-import { Container, Typography } from '@mui/material';
+import { Container, Typography, Grid,Box, Paper } from '@mui/material';
 import type { NHLGameScore } from '../types/types.ts';
+
 
 const getYesterday = (): string => {
   const date = new Date();
@@ -90,7 +91,7 @@ export const Scores: React.FC = () => {
   }
 
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="xl">
       <Header
         date={urlDate || yesterday}
         today={today}
@@ -105,17 +106,23 @@ export const Scores: React.FC = () => {
         NHL Scores for {data.currentDate}
       </Typography>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-        {getRankedGames(data.games).map(game => (
-          <GameCard
-            key={game.game.id}
-            game={game}
-            spoilerFree={spoilerFree}
-            isFavorite={isFavorite}
-            onToggleFavorite={toggleFavorite}
-          />
-        ))}
-      </div>
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid container spacing={2}>
+          {getRankedGames(data.games).map(game => (
+            <Grid size={{ xs: 12, md: 6, lg: 3 }}
+              key={game.id}
+            >
+              <GameCard
+                key={game.game.id}
+                game={game}
+                spoilerFree={spoilerFree}
+                isFavorite={isFavorite}
+                onToggleFavorite={toggleFavorite}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
     </Container>
   );
 };

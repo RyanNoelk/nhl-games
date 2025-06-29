@@ -99,7 +99,6 @@ export const GameCard: React.FC<GameCardProps> = ({
       onClick={spoilerFree ? handleScoreToggle : undefined}
       sx={{
         position: 'relative',
-        borderLeft: score === 1 ? `4px solid ${theme.palette.warning.main}` : 'none',
         borderRadius: 2,
         cursor: spoilerFree ? 'pointer' : 'default',
         '&:hover': {
