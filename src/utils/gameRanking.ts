@@ -1,6 +1,14 @@
 // @ts-nocheck
 import type { NHLGameScore, RankingResult } from '../types/types.ts';
 
+// Things to consider
+// fav team wins
+// 2 fav teams playing
+// phyical game
+// fighting
+// high shoot total for fav team
+// overtime/shootout
+
 export const calculateGameScore = (game: NHLGameScore, favoriteTeams: string[]): RankingResult => {
   let score = 0;
   // Check if the game includes a favorite team
