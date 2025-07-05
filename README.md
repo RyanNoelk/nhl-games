@@ -1,6 +1,4 @@
-Now I want to rank the games. Each game should get a score, they be ranked by that score. The ranking should happen in its own file. The scoring works as follows:
-1. Games get 50 points if the game includes a fav team.
-2. Games get 50 points in a fav team wins.
-3. Games get 50 points in a fav team wins by less than 2 points
-
-testing URL: http://localhost:5173/?date=2025-01-25
+TODO:
+- We should add support for a teir system so that each games that are good are shown not only first, but it a seperate section/row. THere should be some color graident attahed as well, so that the differetn games can be shown as different colors.
+- Add an upcoming game section that display upcomeing games from fav teams. Afternoon games should be infasized so that it's easy to see if a game is watchable for me.
+- 
